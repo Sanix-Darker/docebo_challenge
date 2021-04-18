@@ -1,4 +1,10 @@
 <?php
+/**
+ *
+ *
+ *
+ */
+
 
 /**
  *
@@ -38,6 +44,17 @@ function is_page_num_valid($page_num){
 
     $result['error'] = "Invalid page number requested";
     return False;
+}
+
+
+function valid_pages($page_size, $page_num){
+    if (is_page_num_valid($page_num)){
+        if (is_page_size_valid($page_size))
+            return true;
+        else
+            return false;
+    }else
+        return false;
 }
 
 /**
