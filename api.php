@@ -9,8 +9,14 @@ header("Pragma: no-cache");
 header('Content-Type:text/json; Charset=UTF-8');
 
 
+// buffering
+ob_start();
+
 // We include the core
 include_once("./utils/core.php");
 
 // The main function
 main();
+
+// cleaning it
+ob_end_flush();

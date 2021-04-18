@@ -1,10 +1,10 @@
 <?php
 
-ob_start();
-
+// essentials configs for error print
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
+// database parameters
 $hostname = "localhost";
 $dbname = "docebo_challenge";
 $user = "root";

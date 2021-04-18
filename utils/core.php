@@ -10,13 +10,13 @@ $result['nodes'] = [];
 
 
 /**
- * check_node_id
- * This function will check if a node_id exist in the db
- * by doing a simple select-where.
- * And return if yes or no (true/false) the node_id exist
+ * main
  *
- * @param {*} $node_id
- * @returns {boolean}
+ * This function will check required parameters, validate pages
+ * an fetch results if everything is ok;
+ * and at the end just print the result array as a json
+ *
+ * @returns {void}
  */
 function main(){
     global $result;
