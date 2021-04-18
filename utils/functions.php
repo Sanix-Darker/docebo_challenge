@@ -84,13 +84,16 @@ function check_required_params(){
 /**
  *
  */
-function fetch_results($query, $search_keyword, $language){
+function fetch_results($node_id, $language, $search_keyword, $page_num, $page_size){
     global $result;
 
     $result['nodes'] = [];
 
     try {
         global $db;
+
+        // We build the query
+        $query = generate_query($node_id, $language, $search_keyword, $page_num, $page_size);
 
         $req = $db->query($query);
         while($row = $req->fetch())
@@ -101,7 +104,7 @@ function fetch_results($query, $search_keyword, $language){
                 }
             }
             $row["children"] = count_children($row["idNode"], $search_keyword, $language);
-            $row["node_id"] = $row["idNode"];
+            $row["node_id"] = (int)$row["idNode"];
             $row["name"] = $row["nodeName"];
             unset($row["nodeName"]);
             unset($row["idNode"]);

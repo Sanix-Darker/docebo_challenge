@@ -33,11 +33,8 @@ function main(){
         $search_keyword = (!isset($_GET["search_keyword"])) ? "" : $_GET["search_keyword"];
 
         if (valid_pages($page_size, $page_num)){
-            // We build the query
-            $query = generate_query($node_id, $language, $search_keyword, $page_num, $page_size);
-
             // From the generated query, we fetch results
-            fetch_results($query, $search_keyword, $language);
+            fetch_results($node_id, $language, $search_keyword, $page_num, $page_size);
         }
     }
     echo json_encode($result);

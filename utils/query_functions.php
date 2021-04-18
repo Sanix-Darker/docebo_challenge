@@ -48,9 +48,8 @@ function generate_query($node_id, $language, $search_keyword, $page_num, $page_s
                 node_tree AS sub_parent,
                 (".sub_tree_query($node_id).") AS sub_tree
         WHERE node.iLeft BETWEEN parent.iLeft AND parent.iRight
-                AND node.iLeft BETWEEN sub_parent.iLeft
-                AND sub_parent.iRight
-                AND sub_parent.idNode > sub_tree.idNode
+                AND (node.iLeft BETWEEN sub_parent.iLeft AND sub_parent.iRight)
+                AND sub_parent.idNode = sub_tree.idNode
         GROUP BY node.idNode
         HAVING depth>=0
                 AND LOWER(nodeName) LIKE LOWER('%".$search_keyword."%')
@@ -77,9 +76,8 @@ function count_children($node_id, $search_keyword, $language){
                 node_tree AS sub_parent,
                 (".sub_tree_query($node_id).") AS sub_tree
         WHERE node.iLeft BETWEEN parent.iLeft AND parent.iRight
-                AND node.iLeft BETWEEN sub_parent.iLeft
-                AND sub_parent.iRight
-                AND sub_parent.idNode > sub_tree.idNode
+                AND (node.iLeft BETWEEN sub_parent.iLeft AND sub_parent.iRight)
+                AND sub_parent.idNode = sub_tree.idNode
         GROUP BY node.idNode
         HAVING depth>=0
                 AND LOWER(nodeName) LIKE LOWER('%".$search_keyword."%')
