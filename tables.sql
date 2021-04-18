@@ -6,9 +6,11 @@ SET time_zone = "+00:00";
 --
 -- Database: `docebo_challenge`
 --
-CREATE DATABASE IF NOT EXISTS docebo_challenge
+CREATE DATABASE IF NOT EXISTS docebo_challenge;
 
 -- --------------------------------------------------------
+
+USE docebo_challenge;
 
 --
 -- Table structure for table `node_tree`

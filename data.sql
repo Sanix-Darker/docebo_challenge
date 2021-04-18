@@ -1,7 +1,4 @@
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
+USE docebo_challenge;
 
 --
 -- Dumping data for table `node_tree`
