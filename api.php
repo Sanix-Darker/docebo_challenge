@@ -8,9 +8,10 @@ header("Cache-Control: private");
 header("Pragma: no-cache");
 header('Content-Type:text/json; Charset=UTF-8');
 
-
+// include some files
 include_once("./config.php");
-include_once("./functions.php");
+include_once("./utils/query_functions.php");
+include_once("./utils/functions.php");
 
 $result = array();
 
@@ -32,11 +33,15 @@ function main(){
             $page_size = (!isset($_GET["page_size"])) ? 100 : $_GET["page_size"];
             $search_keyword = (!isset($_GET["search_keyword"])) ? "" : $_GET["search_keyword"];
 
-            // We build the query
-            $query = generate_query($node_id, $language, $search_keyword, $page_num, $page_size);
+            if (is_page_num_valid($page_num)){
+                if (is_page_size_valid($page_size)){
+                    // We build the query
+                    $query = generate_query($node_id, $language, $search_keyword, $page_num, $page_size);
 
-            // From the generated query, we fetch results
-            fetch_results($query, $search_keyword, $language);
+                    // From the generated query, we fetch results
+                    fetch_results($query, $search_keyword, $language);
+                }
+            }
         }
         echo json_encode($result);
     }
