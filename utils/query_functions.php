@@ -6,9 +6,14 @@
  */
 
 
-
 /**
+ * check_node_id
+ * This function will check if a node_id exist in the db
+ * by doing a simple select-where.
+ * And return if yes or no (true/false) the node_id exist
  *
+ * @param {*} $node_id
+ * @returns {boolean}
  */
 function get__query($language){
     $query = "
@@ -19,7 +24,13 @@ function get__query($language){
 }
 
 /**
+ * check_node_id
+ * This function will check if a node_id exist in the db
+ * by doing a simple select-where.
+ * And return if yes or no (true/false) the node_id exist
  *
+ * @param {*} $node_id
+ * @returns {boolean}
  */
 function sub_tree_query($node_id){
     return "
@@ -34,7 +45,13 @@ function sub_tree_query($node_id){
 }
 
 /**
+ * check_node_id
+ * This function will check if a node_id exist in the db
+ * by doing a simple select-where.
+ * And return if yes or no (true/false) the node_id exist
  *
+ * @param {*} $node_id
+ * @returns {boolean}
  */
 function generate_query($node_id, $language, $search_keyword, $page_num, $page_size){
     global $result;
@@ -62,7 +79,13 @@ function generate_query($node_id, $language, $search_keyword, $page_num, $page_s
 }
 
 /**
+ * check_node_id
+ * This function will check if a node_id exist in the db
+ * by doing a simple select-where.
+ * And return if yes or no (true/false) the node_id exist
  *
+ * @param {*} $node_id
+ * @returns {boolean}
  */
 function count_children($node_id, $search_keyword, $language){
     global $db;
