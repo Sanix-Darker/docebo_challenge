@@ -1,30 +1,4 @@
 <?php
-/**
- *
- *
- *
- */
-
-
-
-/**
- * check_node_id
- * This function will check if a node_id exist in the db
- * by doing a simple select-where.
- * And return if yes or no (true/false) the node_id exist
- *
- * @param {*} $node_id
- * @returns {boolean}
- */
-function check_node_id($node_id){
-    global $db;
-
-    $query = "SELECT COUNT(*) as node_count FROM node_tree WHERE idNode=".$node_id;
-    $req = $db->query($query);
-    $row = $req->fetch();
-    return ($row["node_count"] > 0) ? true: false;
-}
-
 
 /**
  * check_node_id
@@ -110,45 +84,5 @@ function check_required_params(){
     else{
         $result['error'] = "Invalid node id";
         return false;
-    }
-}
-
-/**
- * check_node_id
- * This function will check if a node_id exist in the db
- * by doing a simple select-where.
- * And return if yes or no (true/false) the node_id exist
- *
- * @param {*} $node_id
- * @returns {boolean}
- */
-function fetch_results($node_id, $language, $search_keyword, $page_num, $page_size){
-    global $result;
-
-    try {
-        global $db;
-
-        // We build the query
-        $query = generate_query($node_id, $language, $search_keyword, $page_num, $page_size);
-
-        $req = $db->query($query);
-        while($row = $req->fetch())
-        {
-            foreach ($row as $key => $value)
-                if (is_int($key) || $key =="depth")
-                    unset($row[$key]);
-
-            $row["children"] = count_children($row["idNode"], $search_keyword, $language);
-            $row["node_id"] = (int)$row["idNode"];
-            $row["name"] = $row["nodeName"];
-            unset($row["nodeName"]);
-            unset($row["idNode"]);
-            unset($row["language"]);
-
-            $result['nodes'][] = $row;
-        }
-    } catch(PDOException $e) {
-        $msg = $e->getMessage();
-        $result['error'] = $msg;
     }
 }

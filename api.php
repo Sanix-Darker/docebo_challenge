@@ -10,9 +10,10 @@ header('Content-Type:text/json; Charset=UTF-8');
 
 // include some files
 include_once("./config.php");
-include_once("./utils/query_functions.php");
-include_once("./utils/functions.php");
+include_once("./utils/commons.php");
 
+
+// the global variable for the result
 $result = array();
 $result['nodes'] = [];
 
