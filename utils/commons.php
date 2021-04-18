@@ -2,13 +2,12 @@
 /**
  * commons functions
  *
- * All common function that will be used for the core
+ * All common functions that will be used for the core
  */
 
  // We include some necessary functions
 include_once("./utils/helpers.php");
 include_once("./utils/queries.php");
-
 
 
 /**
